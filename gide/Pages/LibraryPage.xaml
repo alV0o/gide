@@ -1,0 +1,44 @@
+﻿<Page x:Class="gide.Pages.LibraryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:gide.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LibraryPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" Background="DarkGray" LastChildFill="False">
+            <StackPanel Margin="5" Orientation="Horizontal" DockPanel.Dock="Left">
+                <Button Content="Каталог" Click="ToCatalog_Click"/>
+                <Button Content="Библиотека" Click="ToLibrary_Click"/>
+            </StackPanel>
+            <StackPanel Margin="5" DockPanel.Dock="Right" Orientation="Horizontal">
+                <Button Content="Аккаунт"/>
+            </StackPanel>
+        </DockPanel>
+
+        <Grid Grid.Row="1" Margin="10">
+            <ListView HorizontalContentAlignment="Stretch" ItemsSource="{Binding Games}" SelectedItem="{Binding SelectedGame}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel LastChildFill="False">
+                            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+                                <TextBlock Text="{Binding Title}"/>
+                            </StackPanel>
+                            <Button DockPanel.Dock="Right" Content="Скачать" Click="Download_Click"/>
+                            <Button DockPanel.Dock="Right" Content="Скачать весь проект" Click="DownloadFullProject_Click"/>
+                            <Button DockPanel.Dock="Right" Content="Запустить" Click="Start_Click"/>
+                            <Button DockPanel.Dock="Right" Content="Открыть проект" Click="OpenProject_Click"/>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Grid>
+</Page>
