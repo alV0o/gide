@@ -1,0 +1,26 @@
+﻿<Window x:Class="gide.Windows.SaveModModalWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gide.Windows"
+        mc:Ignorable="d"
+        Title="Мод"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="5"/>
+            <RowDefinition/>
+            <RowDefinition Height="5"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Введите название модификации"/>
+        <TextBox Text="{Binding Title}" Grid.Row="2" Width="250"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Right">
+            <Button IsDefault="True" Content="Сохранить" Click="Save_Click"/>
+            <Button IsCancel="True" Content="Отмена"/>
+        </StackPanel>
+    </Grid>
+</Window>

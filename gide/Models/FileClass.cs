@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace gide.Models
 {
-    public class FileClass
+    public class FileClass : FileBaseItem
     {
-        public string Name { get; set; }
-        public string Path { get; set; }
-        public FileClass(string name, string path)
-        {
-            Name = name;
-            Path = path;
-        }
+        public FileClass(string name, string path) : base(name, path) { }
     }
 }

@@ -35,6 +35,7 @@
                             <Button DockPanel.Dock="Right" Content="Скачать весь проект" Click="DownloadFullProject_Click"/>
                             <Button DockPanel.Dock="Right" Content="Запустить" Click="Start_Click"/>
                             <Button DockPanel.Dock="Right" Content="Открыть проект" Click="OpenProject_Click"/>
+                            <Button DockPanel.Dock="Right" Content="Открыть мод" Click="ViewMod_Click"/>
                         </DockPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

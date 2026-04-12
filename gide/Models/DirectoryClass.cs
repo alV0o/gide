@@ -7,16 +7,9 @@ using System.Threading.Tasks;
 
 namespace gide.Models
 {
-    public class DirectoryClass
+    public class DirectoryClass : FileBaseItem
     {
-        public string Name { get; set; }
-        public string Path { get; set; }
-        public ObservableCollection<FileClass> Files { get; set; } = new();
-        public ObservableCollection<DirectoryClass> Directories { get; set; } = new();
-        public DirectoryClass(string name, string path)
-        {
-            Name = name;
-            Path = path;
-        }
+        public ObservableCollection<FileBaseItem> Children { get; set; } = new();
+        public DirectoryClass(string name, string path) : base(name, path) { }
     }
 }

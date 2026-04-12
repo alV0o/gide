@@ -1,60 +1,77 @@
 ﻿using gide.Models;
 using gide.Service;
+using gide.Windows;
 using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Highlighting;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace gide.Pages
 {
     /// <summary>
     /// Логика взаимодействия для ProjectPage.xaml
     /// </summary>
-    public partial class ProjectPage : Page
+    public partial class ProjectPage : Page, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler? PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
         public ObservableCollection<DirectoryClass> MainDirectory { get; set; } = new();
         public TextDocument TextEdit { get; set; } = new();
         private FileClass fileClass;
-        public ProjectPage(DirectoryInfo _di)
+
+        private bool _isModded = false;
+        public bool IsModded 
+        { 
+            get=>_isModded; 
+            set 
+            { 
+                _isModded = value;
+                OnPropertyChanged("IsModded");
+            } 
+        }
+
+        private string gameName = null!;
+
+
+        public ProjectPage(DirectoryInfo _di, string _gameName, bool? _isMod = null)
         {
             InitializeComponent();
+            if (_isMod == true) IsModded = true;
             MainDirectory.Add(AddToList(_di));
+            gameName = _gameName;
             avalonedit.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition("C#");
         }
+
+
 
         public DirectoryClass AddToList(DirectoryInfo mainDir)
         {
             DirectoryClass newDir = new DirectoryClass(mainDir.Name, mainDir.FullName);
 
-            ObservableCollection<DirectoryClass> dirClasses = new ObservableCollection<DirectoryClass>();
+            ObservableCollection<FileBaseItem> children = new();
             foreach (var dr in mainDir.GetDirectories())
             {
-                dirClasses.Add(AddToList(dr));
+                children.Add(AddToList(dr));
             }
 
-            ObservableCollection<FileClass> fileClasses = new ObservableCollection<FileClass>();
             foreach (var fl in mainDir.GetFiles())
             {
-                fileClasses.Add(new FileClass(fl.Name, fl.FullName));
+                children.Add(new FileClass(fl.Name, fl.FullName));
             }
 
-            newDir.Files = fileClasses;
-            newDir.Directories = dirClasses;
+            newDir.Children = children;
             return newDir;
         }
 
@@ -107,8 +124,7 @@ namespace gide.Pages
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
-            string nameExe = new GameService().Games.Where(g => g.Title == MainDirectory[0].Name).FirstOrDefault().NameExe;
-            string[] folderPath = Directory.GetFiles(MainDirectory[0].Path, nameExe, SearchOption.AllDirectories);
+            string[] folderPath = Directory.GetFiles(MainDirectory[0].Path, gameName, SearchOption.AllDirectories);
             string lastUpdatedPath = folderPath[0];
 
             foreach(string folderPathItem in folderPath)
@@ -117,6 +133,53 @@ namespace gide.Pages
             }
 
             Process.Start(lastUpdatedPath);
+        }
+
+        //https://learn.microsoft.com/ru-ru/dotnet/standard/io/how-to-copy-directories
+        static void CopyDirectory(string sourceDir, string destinationDir, bool recursive)
+        {
+            var dir = new DirectoryInfo(sourceDir);
+
+            if (!dir.Exists)
+                throw new DirectoryNotFoundException($"Source directory not found: {dir.FullName}");
+
+            DirectoryInfo[] dirs = dir.GetDirectories();
+
+            Directory.CreateDirectory(destinationDir);
+
+            foreach (FileInfo file in dir.GetFiles())
+            {
+                string targetFilePath = Path.Combine(destinationDir, file.Name);
+                file.CopyTo(targetFilePath);
+            }
+
+            if (recursive)
+            {
+                foreach (DirectoryInfo subDir in dirs)
+                {
+                    string newDestinationDir = Path.Combine(destinationDir, subDir.Name);
+                    CopyDirectory(subDir.FullName, newDestinationDir, true);
+                }
+            }
+        }
+
+
+
+        private void AddMod_Click(object sender, RoutedEventArgs e)
+        {
+
+            SaveModModalWindow saveModModalWindow = new SaveModModalWindow();
+            if (saveModModalWindow.ShowDialog() == true)
+            {
+                string projectPath = MainDirectory[0].Path.Remove(MainDirectory[0].Path.LastIndexOf('\\'));
+                string folderPath = Path.Combine(projectPath, "modifications", saveModModalWindow.Title);
+                Directory.CreateDirectory(folderPath);
+
+                CopyDirectory(MainDirectory[0].Path, folderPath, true);
+                MainDirectory[0] = AddToList(new DirectoryInfo(folderPath));
+
+                IsModded = true;
+            }
         }
     }
 }

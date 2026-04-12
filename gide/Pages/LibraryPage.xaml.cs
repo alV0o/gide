@@ -1,5 +1,6 @@
 ﻿using gide.Models;
 using gide.Service;
+using gide.Windows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,7 +19,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace gide.Pages
 {
@@ -61,13 +61,13 @@ namespace gide.Pages
 
                     foreach ( var file in Directory.GetFiles(di))
                     {
-                        string filePath = System.IO.Path.Combine(folderPath, System.IO.Path.GetFileName(file));
+                        string filePath = Path.Combine(folderPath, System.IO.Path.GetFileName(file));
                         File.Move(file, filePath);
                     }
 
                     foreach(var dir in Directory.GetDirectories(di))
                     {
-                        string directoryPath = System.IO.Path.Combine(folderPath, System.IO.Path.GetFileName(dir));
+                        string directoryPath = Path.Combine(folderPath, System.IO.Path.GetFileName(dir));
                         Directory.Move(dir, directoryPath);
                     }
 
@@ -78,10 +78,10 @@ namespace gide.Pages
 
         private async void Download_Click(object sender, RoutedEventArgs e)
         {
-            string folderPath = System.IO.Path.Combine("game", SelectedGame.Title);
+            string folderPath = Path.Combine("Games", SelectedGame.Title, "main");
             Directory.CreateDirectory(folderPath);
 
-            string filePath = System.IO.Path.Combine(folderPath, "game.zip");
+            string filePath = Path.Combine(folderPath, "game.zip");
 
             await _downloadService.DownloadFileAsync(SelectedGame.BuildUrl, filePath);
 
@@ -92,7 +92,7 @@ namespace gide.Pages
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
-            string folderPath = System.IO.Path.Combine("game", SelectedGame.Title);
+            string folderPath = Path.Combine("Games", SelectedGame.Title, "main");
 
             DirectoryInfo di = new DirectoryInfo(folderPath);
 
@@ -108,10 +108,10 @@ namespace gide.Pages
 
         private async void DownloadFullProject_Click(object sender, RoutedEventArgs e)
         {
-            string folderPath = System.IO.Path.Combine("dev", SelectedGame.Title);
+            string folderPath = Path.Combine("Games", SelectedGame.Title, "dev");
             Directory.CreateDirectory(folderPath);
 
-            string filePath = System.IO.Path.Combine(folderPath, "dev.zip");
+            string filePath = Path.Combine(folderPath, "dev.zip");
 
             await _downloadService.DownloadFileAsync(SelectedGame.FullProjectUrl, filePath);
 
@@ -122,9 +122,24 @@ namespace gide.Pages
 
         private void OpenProject_Click(object sender, RoutedEventArgs e)
         {
-            string folderPath = System.IO.Path.Combine("dev", SelectedGame.Title);
+            string folderPath = Path.Combine("Games", SelectedGame.Title, "dev");
 
-            NavigationService.Navigate(new ProjectPage(new DirectoryInfo(folderPath)));
+            NavigationService.Navigate(new ProjectPage(new DirectoryInfo(folderPath), SelectedGame.NameExe));
+        }
+
+        private void ViewMod_Click(object sender, RoutedEventArgs e)
+        {
+            string folderPath = Path.Combine("Games", SelectedGame.Title, "modifications");
+            if (!Directory.Exists(folderPath))
+            {
+                MessageBox.Show("Моды отсутствуют");
+                return;
+            }
+            ViewModModalWindow viewModModalWindow = new(new DirectoryInfo(folderPath));
+            if (viewModModalWindow.ShowDialog() == true) 
+            {
+                NavigationService.Navigate(new ProjectPage(new DirectoryInfo(Path.Combine(folderPath, viewModModalWindow.SelectedMod)), SelectedGame.NameExe ,true));
+            }
         }
     }
 }
