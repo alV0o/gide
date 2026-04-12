@@ -85,7 +85,7 @@ namespace gide.Pages
             MessageBox.Show("Сохранено");
         }
 
-        private void BuildBtn_Click(object sender, RoutedEventArgs e)
+        private async void BuildBtn_Click(object sender, RoutedEventArgs e)
         {
             string[] path = Directory.GetFiles(MainDirectory[0].Path, "*.csproj", SearchOption.AllDirectories);
 
@@ -93,17 +93,15 @@ namespace gide.Pages
             {
                 FileName = "dotnet",
                 Arguments = $"build \"{path[0]}\"",
-                RedirectStandardOutput = true ,
+                RedirectStandardOutput = false,
                 UseShellExecute = false,
-                StandardOutputEncoding = Encoding.UTF8,
                 CreateNoWindow = true,
             };
 
             using (var process = Process.Start(startInfo))
             {
-                process.WaitForExit();
-                var output = process.StandardOutput.ReadToEnd();
-                MessageBox.Show(output);
+                await process.WaitForExitAsync();
+                MessageBox.Show("Сборка прошла успешно!");
             }
         }
 

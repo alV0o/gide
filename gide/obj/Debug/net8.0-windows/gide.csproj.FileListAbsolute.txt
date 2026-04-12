@@ -158,3 +158,4 @@ D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\GeneratedInternalTyp
 D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\Pages\ProjectPage.baml
 D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\Pages\RegistrationPage.g.cs
 D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\Pages\RegistrationPage.baml
+D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\gide.sourcelink.json
