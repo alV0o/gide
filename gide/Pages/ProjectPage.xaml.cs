@@ -21,6 +21,8 @@ namespace gide.Pages
     /// </summary>
     public partial class ProjectPage : Page, INotifyPropertyChanged
     {
+        private const string ModDir = "modifications";
+
         public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
@@ -41,8 +43,19 @@ namespace gide.Pages
                 OnPropertyChanged("IsModded");
             } 
         }
+        private bool _isNotBuilded = true;
+        public bool IsNotBuilded
+        {
+            get => _isNotBuilded;
+            set
+            {
+                _isNotBuilded = value;
+                OnPropertyChanged("IsNotBuilded");
+            }
+        }
 
         private string gameName = null!;
+
 
 
         public ProjectPage(DirectoryInfo _di, string _gameName, bool? _isMod = null)
@@ -98,34 +111,51 @@ namespace gide.Pages
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (fileClass == null)
+            {
+                MessageBox.Show("Выберите файл");
+                return;
+            }
             File.WriteAllText(fileClass.Path, TextEdit.Text);
             MessageBox.Show("Сохранено");
         }
 
         private async void BuildBtn_Click(object sender, RoutedEventArgs e)
         {
-            string[] path = Directory.GetFiles(MainDirectory[0].Path, "*.csproj", SearchOption.AllDirectories);
+            string[] path = Directory.GetFiles(MainDirectory.First().Path, "*.csproj", SearchOption.AllDirectories);
 
             var startInfo = new ProcessStartInfo
             {
                 FileName = "dotnet",
-                Arguments = $"build \"{path[0]}\"",
+                Arguments = $"build \"{path.First()}\"",
                 RedirectStandardOutput = false,
                 UseShellExecute = false,
                 CreateNoWindow = true,
             };
+            IsNotBuilded = false;
 
-            using (var process = Process.Start(startInfo))
+            try
             {
-                await process.WaitForExitAsync();
-                MessageBox.Show("Сборка прошла успешно!");
+                using (var process = Process.Start(startInfo))
+                {
+                    await process.WaitForExitAsync();
+                    MessageBox.Show("Сборка прошла успешно!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                IsNotBuilded = true;
             }
         }
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
-            string[] folderPath = Directory.GetFiles(MainDirectory[0].Path, gameName, SearchOption.AllDirectories);
-            string lastUpdatedPath = folderPath[0];
+            string[] folderPath = Directory.GetFiles(MainDirectory.First().Path, gameName, SearchOption.AllDirectories);
+            string lastUpdatedPath = folderPath.First();
 
             foreach(string folderPathItem in folderPath)
             {
@@ -171,11 +201,11 @@ namespace gide.Pages
             SaveModModalWindow saveModModalWindow = new SaveModModalWindow();
             if (saveModModalWindow.ShowDialog() == true)
             {
-                string projectPath = MainDirectory[0].Path.Remove(MainDirectory[0].Path.LastIndexOf('\\'));
-                string folderPath = Path.Combine(projectPath, "modifications", saveModModalWindow.Title);
+                string projectPath = MainDirectory.First().Path.Remove(MainDirectory[0].Path.LastIndexOf('\\'));
+                string folderPath = Path.Combine(projectPath, ModDir, saveModModalWindow.ModTitle);
                 Directory.CreateDirectory(folderPath);
 
-                CopyDirectory(MainDirectory[0].Path, folderPath, true);
+                CopyDirectory(MainDirectory.First().Path, folderPath, true);
                 MainDirectory[0] = AddToList(new DirectoryInfo(folderPath));
 
                 IsModded = true;

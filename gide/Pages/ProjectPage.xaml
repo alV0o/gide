@@ -33,8 +33,8 @@
         </TreeView>
         <avalonedit:TextEditor x:Name="avalonedit" Grid.Column="1" Grid.Row="1" Margin="10" Document="{Binding TextEdit}"/>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
-            <Button Content="Назад" Click="BackBtn_Click"/>
-            <Button Content="Запустить" Click="Start_Click"/>
+            <Button Content="Назад" Click="BackBtn_Click" IsEnabled="{Binding IsNotBuilded}"/>
+            <Button Content="Запустить" Click="Start_Click" IsEnabled="{Binding IsNotBuilded}"/>
             <Button Content="Добавить модификацию" Click="AddMod_Click">
                 <Button.Style>
                     <Style TargetType="Button">
@@ -62,8 +62,8 @@
                         </Style.Triggers>
                     </Style>
                 </StackPanel.Style>
-                <Button Content="Сохранить" Click="SaveBtn_Click"/>
-                <Button Content="Собрать" Click="BuildBtn_Click"/>
+                <Button Content="Сохранить" Click="SaveBtn_Click" IsEnabled="{Binding IsNotBuilded}"/>
+                <Button Content="Собрать" Click="BuildBtn_Click" IsEnabled="{Binding IsNotBuilded}"/>
             </StackPanel>
         </StackPanel>
     </Grid>

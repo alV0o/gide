@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gide.Windows"
         mc:Ignorable="d"
-        Title="Мод"
+        Title="Добавьте модификацию"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="10">
@@ -17,7 +17,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Введите название модификации"/>
-        <TextBox Text="{Binding Title}" Grid.Row="2" Width="250"/>
+        <TextBox Text="{Binding ModTitle}" Grid.Row="2" Width="250"/>
         <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Right">
             <Button IsDefault="True" Content="Сохранить" Click="Save_Click"/>
             <Button IsCancel="True" Content="Отмена"/>

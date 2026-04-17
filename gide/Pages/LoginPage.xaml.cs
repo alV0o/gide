@@ -32,20 +32,28 @@ namespace gide.Pages
         private void Login_Btn(object sender, RoutedEventArgs e)
         {
             PlayerService playerService = new();
-            var player = playerService.Players.Where(p => p.Username == Username && p.Password == Password);
-            if (player.Count() > 0)
+            var player = playerService.Players.Where(p => p.Username == Username && p.Password == Password).ToArray();
+            if (player.Length > 0)
             {
-                NavigationService.Navigate(new CatalogPage(player.ToArray()[0]));
+                NavigationService.Navigate(new CatalogPage(player.First()));
+            }
+            else
+            {
+                MessageBox.Show("Неверный логин или пароль");
             }
         }
 
         private void AuthorLogin_Click(object sender, RoutedEventArgs e)
         {
             AuthorService authorService = new();
-            var author = authorService.Authors.Where(a => a.Username == Username && a.Password == Password);
-            if (author.Count() > 0)
+            var author = authorService.Authors.Where(a => a.Username == Username && a.Password == Password).ToArray();
+            if (author.Length > 0)
             {
-                NavigationService.Navigate(new AdminPage(author.ToArray()[0]));
+                NavigationService.Navigate(new AdminPage(author.First()));
+            }
+            else
+            {
+                MessageBox.Show("Неверный логин или пароль");
             }
         }
 

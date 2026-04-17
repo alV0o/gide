@@ -19,7 +19,7 @@ namespace gide.Windows
     /// </summary>
     public partial class SaveModModalWindow : Window
     {
-        string Title { get; set; } = null!;
+        public string ModTitle { get; set; } = null!;
         public SaveModModalWindow()
         {
             InitializeComponent();

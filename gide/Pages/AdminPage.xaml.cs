@@ -28,15 +28,36 @@ namespace gide.Pages
         {
             InitializeComponent();
             Author = _author;
+            Game.Author = Author;
+            Game.AuthorId = Author.Id;
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             GameService gameService = new GameService();
-            Game.Author = Author;
-            Game.AuthorId = Author.Id;
-            gameService.Add(Game);
-            MessageBox.Show("Добавление успешно");
+            if (string.IsNullOrEmpty(Game.NameExe) ||
+                string.IsNullOrEmpty(Game.Title) ||
+                string.IsNullOrEmpty(Game.FullProjectUrl) ||
+                string.IsNullOrEmpty(Game.BuildUrl) ||
+                string.IsNullOrEmpty(Game.Description))
+            {
+                MessageBox.Show("Заполните все поля");
+                return;
+            }
+            try
+            {
+                gameService.Add(Game);
+                MessageBox.Show("Добавление успешно");
+                NavigationService.GoBack();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Добавление неудачно", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
             NavigationService.GoBack();
         }
     }

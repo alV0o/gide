@@ -26,12 +26,11 @@ namespace gide.Pages
         public ObservableCollection<Game> Games { get; set; } = new();
         public Game SelectedGame { get; set; }
         public Player Player { get; set; } = null!;
-        GameService _gameService = new();
         public CatalogPage(Player _player)
         {
             InitializeComponent();
-            Games = _gameService.Games;
             Player = _player;
+            Games = new ObservableCollection<Game>(new GameService().Games.Where(g => !Player.Games.Contains(g)));
             DataContext = this;
         }
 
@@ -42,9 +41,25 @@ namespace gide.Pages
 
         private void AddToLibrary_Click(object sender, RoutedEventArgs e)
         {
+            if (SelectedGame == null)
+            {
+                MessageBox.Show("Выберите игру");
+                return;
+            }
             Player.Games.Add(SelectedGame);
-            PlayerService playerService = new PlayerService();
-            playerService.Commit();
+            try
+            {
+                PlayerService playerService = new PlayerService();
+                playerService.Commit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка добавления!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            MessageBox.Show("Добавление успешно");
+            Games.Remove(SelectedGame);
+            SelectedGame = null!;
         }
 
         private void ToLibrary_Click(object sender, RoutedEventArgs e)

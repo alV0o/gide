@@ -48,14 +48,51 @@ namespace gide.Pages
         {
             if (DataContext == Player)
             {
+                if (string.IsNullOrEmpty(Player.Username) ||
+                    string.IsNullOrEmpty(Player.Password))
+                {
+                    MessageBox.Show("Заполните все поля");
+                    return;
+                }
                 PlayerService playerService = new();
-                playerService.Add(Player);
+                if (playerService.Players.Where(p=> p.Username == Player.Username).Count() > 0)
+                {
+                    MessageBox.Show("Такой пользователь уже существует");
+                    return;
+                }
+                try
+                {
+                    playerService.Add(Player);
+                }
+                catch
+                {
+                    MessageBox.Show("Регистрация неудачна");
+                }
             }
             else
             {
+                if (string.IsNullOrEmpty(Author.Username) ||
+                    string.IsNullOrEmpty(Author.Password))
+                {
+                    MessageBox.Show("Заполните все поля");
+                    return;
+                }
                 AuthorService authorService = new();
-                authorService.Add(Author);
+                if (authorService.Authors.Where(a => a.Username == Author.Username).Count() > 0)
+                {
+                    MessageBox.Show("Такой автор уже существует");
+                    return;
+                }
+                try
+                {
+                    authorService.Add(Author);
+                }
+                catch
+                {
+                    MessageBox.Show("Регистрация неудачна");
+                }
             }
+            MessageBox.Show("Регистрация успешна");
             NavigationService.GoBack();
         }
     }
