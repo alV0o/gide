@@ -1,0 +1,25 @@
+﻿<Window x:Class="gide.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gide.Windows"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" Background="DarkGray" LastChildFill="False">
+            <StackPanel Margin="5" Orientation="Horizontal" DockPanel.Dock="Left">
+                <Button Content="Каталог" Click="ToCatalog_Click"/>
+                <Button Content="Библиотека" Click="ToLibrary_Click"/>
+            </StackPanel>
+            <StackPanel Margin="5" DockPanel.Dock="Right" Orientation="Horizontal">
+                <Button Content="Аккаунт"/>
+            </StackPanel>
+        </DockPanel>
+        <Frame Grid.Row="1" x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

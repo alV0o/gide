@@ -128,13 +128,11 @@ D:\ProgrammingAll\for_me\gide\gide\bin\Debug\net8.0-windows\runtimes\win-x86\nat
 D:\ProgrammingAll\for_me\gide\gide\bin\Debug\net8.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 D:\ProgrammingAll\for_me\gide\gide\bin\Debug\net8.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\gide.csproj.AssemblyReference.cache
-D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\MainWindow.g.cs
 D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\Pages\CatalogPage.g.cs
 D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\Pages\LoginPage.g.cs
 D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\App.g.cs
 D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\gide_MarkupCompile.cache
 D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\gide_MarkupCompile.lref
-D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\MainWindow.baml
 D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\Pages\CatalogPage.baml
 D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\Pages\LoginPage.baml
 D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\gide.g.resources
@@ -163,3 +161,7 @@ D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\Windows\SaveModModal
 D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\Windows\SaveModModalWindow.baml
 D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\Windows\ViewModModalWindow.g.cs
 D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\Windows\ViewModModalWindow.baml
+D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\Windows\MainWindow.g.cs
+D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\Windows\MainWindow.baml
+D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\LoginWindow.g.cs
+D:\ProgrammingAll\for_me\gide\gide\obj\Debug\net8.0-windows\LoginWindow.baml

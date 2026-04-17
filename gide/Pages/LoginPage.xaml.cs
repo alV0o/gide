@@ -35,7 +35,9 @@ namespace gide.Pages
             var player = playerService.Players.Where(p => p.Username == Username && p.Password == Password).ToArray();
             if (player.Length > 0)
             {
-                NavigationService.Navigate(new CatalogPage(player.First()));
+                var mainWindow = new Windows.MainWindow(player.First());
+                mainWindow.Show();
+                Application.Current.MainWindow.Close();
             }
             else
             {

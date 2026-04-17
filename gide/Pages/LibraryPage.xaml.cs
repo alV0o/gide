@@ -45,11 +45,6 @@ namespace gide.Pages
             DataContext = this;
         }
 
-        private void ToLibrary_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private async Task UnpackGameAsync(string archivePath, string folderPath)
         {
             try
@@ -149,11 +144,6 @@ namespace gide.Pages
                 MessageBox.Show("Отсутствует запускаемый файл");
                 return;
             }
-        }
-
-        private void ToCatalog_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.GoBack();
         }
 
         private void DownloadFullProject_Click(object sender, RoutedEventArgs e)

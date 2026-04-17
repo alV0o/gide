@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 D:\ProgrammingAll\for_me\gide\gide\App.xaml
-9-1521083790
+10-2076560188
 
-30-926342475
+3134988430
 238175401557
-MainWindow.xaml;Pages\AdminPage.xaml;Pages\CatalogPage.xaml;Pages\LibraryPage.xaml;Pages\LoginPage.xaml;Pages\ProjectPage.xaml;Pages\RegistrationPage.xaml;Windows\SaveModModalWindow.xaml;Windows\ViewModModalWindow.xaml;
+LoginWindow.xaml;Pages\AdminPage.xaml;Pages\CatalogPage.xaml;Pages\LibraryPage.xaml;Pages\LoginPage.xaml;Pages\ProjectPage.xaml;Pages\RegistrationPage.xaml;Windows\MainWindow.xaml;Windows\SaveModModalWindow.xaml;Windows\ViewModModalWindow.xaml;
 
 False
 

@@ -34,11 +34,6 @@ namespace gide.Pages
             DataContext = this;
         }
 
-        private void Catalog_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void AddToLibrary_Click(object sender, RoutedEventArgs e)
         {
             if (SelectedGame == null)
@@ -60,11 +55,6 @@ namespace gide.Pages
             MessageBox.Show("Добавление успешно");
             Games.Remove(SelectedGame);
             SelectedGame = null!;
-        }
-
-        private void ToLibrary_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new LibraryPage(Player));
         }
     }
 }

@@ -1,0 +1,14 @@
+D:\ProgrammingAll\for_me\for_github_releases\for_github_releases\bin\Debug\net8.0\for_github_releases.exe
+D:\ProgrammingAll\for_me\for_github_releases\for_github_releases\bin\Debug\net8.0\for_github_releases.deps.json
+D:\ProgrammingAll\for_me\for_github_releases\for_github_releases\bin\Debug\net8.0\for_github_releases.runtimeconfig.json
+D:\ProgrammingAll\for_me\for_github_releases\for_github_releases\bin\Debug\net8.0\for_github_releases.dll
+D:\ProgrammingAll\for_me\for_github_releases\for_github_releases\bin\Debug\net8.0\for_github_releases.pdb
+D:\ProgrammingAll\for_me\for_github_releases\for_github_releases\obj\Debug\net8.0\for_github_releases.GeneratedMSBuildEditorConfig.editorconfig
+D:\ProgrammingAll\for_me\for_github_releases\for_github_releases\obj\Debug\net8.0\for_github_releases.AssemblyInfoInputs.cache
+D:\ProgrammingAll\for_me\for_github_releases\for_github_releases\obj\Debug\net8.0\for_github_releases.AssemblyInfo.cs
+D:\ProgrammingAll\for_me\for_github_releases\for_github_releases\obj\Debug\net8.0\for_github_releases.csproj.CoreCompileInputs.cache
+D:\ProgrammingAll\for_me\for_github_releases\for_github_releases\obj\Debug\net8.0\for_github_releases.dll
+D:\ProgrammingAll\for_me\for_github_releases\for_github_releases\obj\Debug\net8.0\refint\for_github_releases.dll
+D:\ProgrammingAll\for_me\for_github_releases\for_github_releases\obj\Debug\net8.0\for_github_releases.pdb
+D:\ProgrammingAll\for_me\for_github_releases\for_github_releases\obj\Debug\net8.0\for_github_releases.genruntimeconfig.cache
+D:\ProgrammingAll\for_me\for_github_releases\for_github_releases\obj\Debug\net8.0\ref\for_github_releases.dll

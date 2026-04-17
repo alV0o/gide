@@ -9,20 +9,6 @@
       Title="LibraryPage">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0" Background="DarkGray" LastChildFill="False">
-            <StackPanel Margin="5" Orientation="Horizontal" DockPanel.Dock="Left">
-                <Button Content="Каталог" Click="ToCatalog_Click"/>
-                <Button Content="Библиотека" Click="ToLibrary_Click"/>
-            </StackPanel>
-            <StackPanel Margin="5" DockPanel.Dock="Right" Orientation="Horizontal">
-                <Button Content="Аккаунт"/>
-            </StackPanel>
-        </DockPanel>
-
         <Grid Grid.Row="1" Margin="10">
             <ListView HorizontalContentAlignment="Stretch" ItemsSource="{Binding Games}" SelectedItem="{Binding SelectedGame}">
                 <ListView.ItemTemplate>
