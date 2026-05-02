@@ -1,0 +1,5 @@
+C:\Users\voros\OneDrive\Рабочий стол\PublishTest\for_github_releases.exe
+C:\Users\voros\OneDrive\Рабочий стол\PublishTest\for_github_releases.dll
+C:\Users\voros\OneDrive\Рабочий стол\PublishTest\for_github_releases.deps.json
+C:\Users\voros\OneDrive\Рабочий стол\PublishTest\for_github_releases.runtimeconfig.json
+C:\Users\voros\OneDrive\Рабочий стол\PublishTest\for_github_releases.pdb

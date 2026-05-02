@@ -30,9 +30,17 @@ namespace gide.Pages
         {
             InitializeComponent();
             Player = _player;
-            Games = new ObservableCollection<Game>(new GameService().Games.Where(g => !Player.Games.Contains(g)));
+        }
+
+        private async void CatalogPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            GameService gameService = new();
+            await gameService.GetAllAsync();
+
+            Games = new ObservableCollection<Game>(gameService.Games.Where(g => !Player.Games.Any(pg=>pg.Id == g.Id)));
             DataContext = this;
         }
+
 
         private void AddToLibrary_Click(object sender, RoutedEventArgs e)
         {

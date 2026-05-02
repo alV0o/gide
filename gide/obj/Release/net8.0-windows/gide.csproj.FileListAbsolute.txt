@@ -128,7 +128,6 @@ D:\ProgrammingAll\for_me\gide\gide\bin\Release\net8.0-windows\runtimes\win-x86\n
 D:\ProgrammingAll\for_me\gide\gide\bin\Release\net8.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 D:\ProgrammingAll\for_me\gide\gide\bin\Release\net8.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\gide.csproj.AssemblyReference.cache
-D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\MainWindow.g.cs
 D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\Pages\AdminPage.g.cs
 D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\Pages\CatalogPage.g.cs
 D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\Pages\LibraryPage.g.cs
@@ -136,7 +135,6 @@ D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\Pages\LoginPage.g.
 D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\App.g.cs
 D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\gide_MarkupCompile.cache
 D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\gide_MarkupCompile.lref
-D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\MainWindow.baml
 D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\Pages\AdminPage.baml
 D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\Pages\CatalogPage.baml
 D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\Pages\LibraryPage.baml
@@ -156,3 +154,14 @@ D:\ProgrammingAll\for_me\gide\gide\bin\Release\net8.0-windows\ICSharpCode.Avalon
 D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\Pages\ProjectPage.g.cs
 D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\Pages\ProjectPage.baml
+D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\LoginWindow.g.cs
+D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\Pages\RegistrationPage.g.cs
+D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\Windows\MainWindow.g.cs
+D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\Windows\SaveModModalWindow.g.cs
+D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\Windows\ViewModModalWindow.g.cs
+D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\LoginWindow.baml
+D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\Pages\RegistrationPage.baml
+D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\Windows\MainWindow.baml
+D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\Windows\SaveModModalWindow.baml
+D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\Windows\ViewModModalWindow.baml
+D:\ProgrammingAll\for_me\gide\gide\obj\Release\net8.0-windows\gide.sourcelink.json

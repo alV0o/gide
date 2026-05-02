@@ -32,7 +32,7 @@ namespace gide.Pages
             Game.AuthorId = Author.Id;
         }
 
-        private void Save_Click(object sender, RoutedEventArgs e)
+        private async void Save_ClickAsync(object sender, RoutedEventArgs e)
         {
             GameService gameService = new GameService();
             if (string.IsNullOrEmpty(Game.NameExe) ||
@@ -46,7 +46,7 @@ namespace gide.Pages
             }
             try
             {
-                gameService.Add(Game);
+                await gameService.AddAsync(Game);
                 MessageBox.Show("Добавление успешно");
                 NavigationService.GoBack();
             }

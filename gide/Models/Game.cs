@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace gide.Models;
 
@@ -46,6 +47,16 @@ public partial class Game : ObservableObject
         get => _nameExe;
         set => SetProperty(ref _nameExe, value);
     }
+
+    [NotMapped]
+    private string _authorName = null!;// !!!!!! Временно пока нету viewmodel для корректного маппинга с dto !!!!!!
+    [NotMapped]
+    public string AuthorName
+    {
+        get => _authorName;
+        set => SetProperty(ref _authorName, value);
+    }
+
 
     private int _authorId;
     public int AuthorId 
